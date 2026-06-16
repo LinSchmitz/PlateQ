@@ -1,20 +1,85 @@
-// $color-primary: #f59a83;
-$color-primary: #f38e82;
-$color-grad-1: #fbdb89;
-$color-grad-2: #f48982;
-
-$color-grey-light-1: #f9f5f3; // Light background
-$color-grey-light-2: #f2efee; // Light lines
-$color-grey-light-3: #d3c7c3; // Light text (placeholder)
-$color-grey-dark-1: #615551; // Normal text
-$color-grey-dark-2: #918581; // Lighter text
-
-$gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
-
+// ==========================================================================
+// 1. GLOBAL SETTINGS & BREAKPOINTS
+// ==========================================================================
 $bp-large: 78.15em; // 1250px
 $bp-medium: 61.25em; // 980px
 $bp-small: 37.5em; // 600px
 $bp-smallest: 31.25em; // 500px
+
+// ==========================================================================
+// 2. LUXURY PALETTES CONFIGURATION (SWITCHABLE)
+// ==========================================================================
+
+// DEFAULT STATE (Authentic Michelin)
+:root {
+  --color-primary: #bd1622;
+  --color-grad-1: #1a1a1a;
+  --color-grad-2: #2d2526;
+  --color-bg-main: #fdfbf7;
+  --color-bg-container: #ffffff;
+  --color-text-normal: #2d2526;
+  --color-text-muted: #8a8a8a;
+  --color-lines: #f2efee;
+}
+
+// THEME 2: MODERN FINE DINING (Gold & Charcoal)
+[data-theme='fine-dining'] {
+  --color-primary: #d4af37;
+  --color-grad-1: #1a1a1a;
+  --color-grad-2: #000000;
+  --color-bg-main: #f4f1ea;
+  --color-bg-container: #1a1a1a;
+  --color-text-normal: #ececec;
+  --color-text-muted: #8a8a8a;
+  --color-lines: #2d2526;
+}
+
+// THEME 3: LUXURY NAVY & GOLD
+[data-theme='navy-gold'] {
+  --color-primary: #d4af37;
+  --color-grad-1: #0a192f;
+  --color-grad-2: #172a45;
+  --color-bg-main: #f4f6f9;
+  --color-bg-container: #1e293b;
+  --color-text-normal: #f4f6f9;
+  --color-text-muted: #8892b0;
+  --color-lines: #0a192f;
+}
+
+// THEME 4: ORGANIC PREMIUM (Italian Olive)
+[data-theme='organic'] {
+  --color-primary: #d97450;
+  --color-grad-1: #1f3a2b;
+  --color-grad-2: #111e16;
+  --color-bg-main: #f9f6f0;
+  --color-bg-container: #ffffff;
+  --color-text-normal: #111e16;
+  --color-text-muted: #8a8a8a;
+  --color-lines: #f2efee;
+}
+
+// THEME 5: ROYAL EXECUTIVE (Burgundy & Champagne)
+[data-theme='royal'] {
+  --color-primary: #d0b49f;
+  --color-grad-1: #3b1017;
+  --color-grad-2: #2d2526;
+  --color-bg-main: #faf7f2;
+  --color-bg-container: #ffffff;
+  --color-text-normal: #2d2526;
+  --color-text-muted: #918581;
+  --color-lines: #faf7f2;
+}
+
+// Dynamic Gradient Generation based on active theme
+$gradient: linear-gradient(
+  to right bottom,
+  var(--color-grad-1),
+  var(--color-grad-2)
+);
+
+// ==========================================================================
+// 3. APPLICATION STYLES (Using Dynamic CSS Variables)
+// ==========================================================================
 
 * {
   margin: 0;
@@ -40,7 +105,7 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  color: $color-grey-dark-1;
+  color: var(--color-text-normal);
   background-image: $gradient;
   background-size: cover;
   background-repeat: no-repeat;
@@ -51,10 +116,10 @@ body {
   max-width: 120rem;
   min-height: 117rem;
   margin: 4vw auto;
-  background-color: #fff;
+  background-color: var(--color-bg-container);
   border-radius: 9px;
   overflow: hidden;
-  box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
+  box-shadow: 0 2rem 6rem 0.5rem rgba(0, 0, 0, 0.2);
 
   display: grid;
   grid-template-rows: 10rem minmax(100rem, auto);
@@ -68,4 +133,15 @@ body {
     margin: 0;
     border-radius: 0;
   }
+}
+
+.search__btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.search__btn:hover {
+  background-color: var(--color-grad-1);
+  transform: translateY(-2px);
 }

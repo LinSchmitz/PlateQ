@@ -1,0 +1,15 @@
+{
+  "name": "plateq",
+  "version": "1.0.0",
+  "description": "PlateQ",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "LinSchmitz",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.4",
+    "parcel": "^2.16.4"
+  }
+}
