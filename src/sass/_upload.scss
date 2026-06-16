@@ -1,14 +1,23 @@
+/* ==========================================================================
+   plateQ ADD RECIPE MODAL WINDOW & UPLOAD FORM STYLES
+   ========================================================================== */
+
 .add-recipe-window {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100rem;
-  background-color: white;
+  background-color: var(
+    --color-bg-container
+  ); /* Dynamically switches theme background */
+  color: var(
+    --color-text-normal
+  ); /* Adapts modal text color based on active palette */
   border-radius: 9px;
 
   padding: 5rem 6rem;
-  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
   z-index: 1000;
   transition: all 0.5s;
 
@@ -22,6 +31,11 @@
     cursor: pointer;
     border: none;
     background: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--color-primary); /* Uses key accent color on hover */
+    }
   }
 }
 
@@ -31,7 +45,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Slightly darker overlay for luxury contrast */
   backdrop-filter: blur(4px);
   z-index: 100;
   transition: all 0.5s;
@@ -56,24 +75,28 @@
     & label {
       font-size: 1.5rem;
       font-weight: 600;
-      color: inherit;
+      color: var(--color-text-normal);
     }
 
     & input {
       font-size: 1.5rem;
       padding: 0.8rem 1rem;
-      border: 1px solid #ddd;
+      border: 1px solid var(--color-lines); /* Dynamic border style matching the palette */
+      background-color: var(--color-bg-main); /* Adaptive dynamic inputs */
+      color: var(--color-text-normal);
       border-radius: 0.5rem;
       transition: all 0.2s;
 
       &::placeholder {
-        color: $color-grey-light-3;
+        color: var(--color-text-muted); /* Replaced old $color-grey-light-3 */
       }
 
       &:focus {
         outline: none;
-        border: 1px solid $color-primary;
-        background-color: $color-grey-light-1;
+        border: 1px solid var(--color-primary); /* Replaced old $color-primary */
+        background-color: var(
+          --color-bg-container
+        ); /* Replaced old $color-grey-light-1 */
       }
     }
 
@@ -90,6 +113,9 @@
     text-transform: uppercase;
     margin-bottom: 1rem;
     grid-column: 1/-1;
+    color: var(
+      --color-primary
+    ); /* Highlights form section titles using active theme color */
   }
 
   &__btn {

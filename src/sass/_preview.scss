@@ -1,3 +1,7 @@
+/* ==========================================================================
+   plateQ RECIPE PREVIEW CARD STYLES (SIDEBAR LIST)
+   ========================================================================== */
+
 .preview {
   &__link {
     &:link,
@@ -6,17 +10,23 @@
       align-items: center;
       padding: 1.5rem 3.25rem;
       transition: all 0.3s;
-      border-right: 1px solid #fff;
+      border-right: 1px solid var(--color-lines); /* Updated from static white to dynamic line color */
       text-decoration: none;
+      background-color: var(
+        --color-bg-container
+      ); /* Matches the sidebar background */
     }
 
     &:hover {
-      background-color: $color-grey-light-1;
+      background-color: var(--color-bg-main); /* Dynamic hover background */
       transform: translateY(-2px);
     }
 
     &--active {
-      background-color: $color-grey-light-1;
+      background-color: var(
+        --color-bg-main
+      ) !important; /* Forces the active item background state */
+      border-left: 4px solid var(--color-primary); /* Optional premium touch: marks active recipe */
     }
   }
 
@@ -37,12 +47,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
-      );
-      opacity: 0.4;
+      background-image: $gradient; /* Dynamic theme gradient mask over recipe photo */
+      opacity: 0.3; /* Adjusted slightly for better image visibility in dark themes */
     }
 
     img {
@@ -65,7 +71,7 @@
   &__title {
     grid-column: 1/-1;
     font-size: 1.45rem;
-    color: $color-primary;
+    color: var(--color-primary); /* Dynamic text headline */
     text-transform: uppercase;
     font-weight: 600;
 
@@ -78,13 +84,15 @@
 
   &__publisher {
     font-size: 1.15rem;
-    color: $color-grey-dark-2;
+    color: var(--color-text-muted); /* Dynamic secondary text color */
     text-transform: uppercase;
     font-weight: 600;
   }
 
   &__user-generated {
-    background-color: darken($color-grey-light-2, 2%);
+    background-color: var(
+      --color-lines
+    ); /* Replaced the old Sass darken() function */
 
     display: flex;
     align-items: center;
@@ -99,7 +107,7 @@
     svg {
       height: 1.2rem;
       width: 1.2rem;
-      fill: $color-primary;
+      fill: var(--color-primary); /* Dynamic user icon color */
     }
   }
 }

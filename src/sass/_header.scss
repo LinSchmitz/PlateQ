@@ -1,6 +1,12 @@
+/* ==========================================================================
+   plateQ HEADER, NAVIGATION & BOOKMARKS STYLES
+   ========================================================================== */
+
 .header {
   grid-area: head;
-  background-color: $color-grey-light-1;
+  background-color: var(
+    --color-bg-main
+  ); /* Linked to the current theme background */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,7 +19,9 @@
 }
 
 .search {
-  background-color: #fff;
+  background-color: var(
+    --color-bg-container
+  ); /* Automatically updates via the active theme */
   border-radius: 10rem;
   display: flex;
   align-items: center;
@@ -22,14 +30,14 @@
 
   &:focus-within {
     transform: translateY(-2px);
-    box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);
+    box-shadow: 0 0.7rem 3rem rgba(0, 0, 0, 0.08);
   }
 
   &__field {
     border: none;
     background: none;
     font-family: inherit;
-    color: inherit;
+    color: var(--color-text-normal); /* Dynamic text color adaptation */
     font-size: 1.7rem;
     width: 30rem;
 
@@ -38,14 +46,14 @@
     }
 
     &::placeholder {
-      color: $color-grey-light-3;
+      color: var(--color-text-muted); /* Dynamic placeholder color sync */
     }
 
     @media only screen and (max-width: $bp-medium) {
       width: auto;
 
       &::placeholder {
-        color: white;
+        color: transparent; /* Cleaner cross-browser responsive design */
       }
     }
   }
@@ -73,7 +81,7 @@
   &__btn {
     height: 100%;
     font-family: inherit;
-    color: inherit;
+    color: var(--color-text-normal);
     font-size: 1.4rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -89,7 +97,7 @@
     svg {
       height: 2.4rem;
       width: 2.4rem;
-      fill: $color-primary;
+      fill: var(--color-primary); /* Linked palette primary color */
       margin-right: 0.7rem;
       transform: translateY(-1px);
     }
@@ -99,7 +107,9 @@
     }
 
     &:hover {
-      background-color: $color-grey-light-2;
+      background-color: var(
+        --color-lines
+      ); /* UI hover response matches current palette */
     }
   }
 }
@@ -107,12 +117,13 @@
 .bookmarks {
   padding: 1rem 0;
   position: absolute;
-  // right: 0;
   right: -2.5rem;
   z-index: 10;
   width: 40rem;
-  background-color: #fff;
-  box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
+  background-color: var(
+    --color-bg-container
+  ); /* Adjusts perfectly to light/dark themes */
+  box-shadow: 0 0.8rem 5rem 2rem rgba(0, 0, 0, 0.15);
 
   visibility: hidden;
   opacity: 0;
@@ -132,7 +143,7 @@
     transition: all 0.3s;
 
     &:hover {
-      background-color: $color-grey-light-2;
+      background-color: var(--color-lines);
     }
   }
 

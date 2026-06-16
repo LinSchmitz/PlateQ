@@ -1,12 +1,16 @@
+/* ==========================================================================
+   plateQ MAIN RECIPE VIEW STYLES (MODERN MINIMALIST VERSION)
+   ========================================================================== */
+
 .recipe {
-  background-color: $color-grey-light-1;
+  background-color: var(--color-bg-main); /* Dynamically switches background */
+  color: var(--color-text-normal); /* Sets adaptive text color for content */
 
   ///////////
-  // FIGURE
+  // FIGURE & TITLE
   &__fig {
     height: 32rem;
     position: relative;
-    // transform: scale(1.04) translateY(-1px);
     transform-origin: top;
 
     &::before {
@@ -17,12 +21,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
-      );
-      opacity: 0.6;
+      background-image: $gradient; /* Dynamic theme gradient mask over food photo */
+      opacity: 0.5; /* Balanced opacity for both deep and warm themes */
     }
   }
 
@@ -37,28 +37,28 @@
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, 20%) skewY(-6deg);
-    color: #fff;
+    /* Modernized: Removed skewY(-6deg) and adjusted translation for a clean, flat look */
+    transform: translate(-50%, 30%);
+    color: #fff; /* Title font color remains high contrast white */
     font-weight: 700;
     font-size: 3.25rem;
     text-transform: uppercase;
-    width: 50%;
-    line-height: 1.95;
+    width: 65%; /* Slightly wider for better text distribution in flat mode */
+    line-height: 1.4; /* Balanced line height for flat typography */
     text-align: center;
+    letter-spacing: 1px; /* Premium typographic touch */
 
     span {
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
-      padding: 1.3rem 2rem;
-      background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
-      );
+      padding: 1rem 2rem; /* Refined padding for a sleeker profile */
+      background-image: $gradient; /* Dynamic gradient background wrapping the text */
+      border-radius: 4px; /* Subtle radius for an elegant, premium finish */
     }
 
     @media only screen and (max-width: $bp-medium) {
-      width: 70%;
+      width: 85%;
+      font-size: 2.8rem;
     }
   }
 
@@ -84,7 +84,7 @@
   &__info-icon {
     height: 2.35rem;
     width: 2.35rem;
-    fill: $color-primary;
+    fill: var(--color-primary); /* Dynamic primary theme accent color */
     margin-right: 1.15rem;
   }
 
@@ -100,7 +100,9 @@
   }
 
   &__user-generated {
-    background-color: darken($color-grey-light-2, 2%);
+    background-color: var(
+      --color-lines
+    ); /* Replaced the old Sass darken() function */
 
     display: flex;
     align-items: center;
@@ -115,7 +117,7 @@
     svg {
       height: 2.25rem;
       width: 2.25rem;
-      fill: $color-primary;
+      fill: var(--color-primary);
     }
   }
 
@@ -125,10 +127,14 @@
     padding: 5rem 8rem;
     font-size: 1.6rem;
     line-height: 1.4;
-    background-color: $color-grey-light-2;
+    background-color: var(
+      --color-bg-container
+    ); /* Replaced light gray with container color */
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-top: 1px solid var(--color-lines);
+    border-bottom: 1px solid var(--color-lines);
   }
 
   &__ingredient-list {
@@ -145,7 +151,7 @@
   &__icon {
     height: 2rem;
     width: 2rem;
-    fill: $color-primary;
+    fill: var(--color-primary);
     margin-right: 1.1rem;
     flex: 0 0 auto;
     margin-top: 0.1rem;
@@ -170,7 +176,7 @@
     font-size: 1.7rem;
     text-align: center;
     margin-bottom: 3.5rem;
-    color: $color-grey-dark-2;
+    color: var(--color-text-muted); /* Adaptive secondary/muted text color */
   }
 
   &__publisher {
